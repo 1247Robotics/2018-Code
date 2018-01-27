@@ -59,5 +59,25 @@ public class OI {
 		return axisValue;
 	}
 
+//----------------------------Gripper-------------------
+	public boolean getGripperButton(){
+		boolean pressed = false;
+		
+		pressed = xboxDriveJoystick.getRawButton(RobotMap.GRIPPER_BUTTON_ID);
+		return pressed;
+		
+	}
 	
+	public boolean getGripperAbortMisson(){
+		boolean pressed = false;
+		
+		pressed = xboxDriveJoystick.getRawButton(RobotMap.GRIPPER_ABORT_BUTTON_ID);
+		return pressed;
+	}
+	public boolean getGripperAbortReset(){
+		boolean pressed = false;
+		
+		pressed = xboxDriveJoystick.getRawButton(RobotMap.GRIPPER_ABORTRESET_BUTTON_ID);
+		return pressed;
+	}
 }

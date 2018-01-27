@@ -1,9 +1,9 @@
 package org.usfirst.frc.team1247.robot.commands;
 
 import org.usfirst.frc.team1247.robot.OI;
-import org.usfirst.frc.team1247.robot.subsystems.ArmGyro;
 import org.usfirst.frc.team1247.robot.subsystems.Climber;
 import org.usfirst.frc.team1247.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team1247.robot.subsystems.Gripper;
 import org.usfirst.frc.team1247.robot.subsystems.Pnuematics;
 import org.usfirst.frc.team1247.robot.subsystems.Arm;
 
@@ -18,11 +18,11 @@ public abstract class BaseCommand extends Command {
 
 	public static Pnuematics pnuematics;
 
-	public static ArmGyro armGyro;
-
 	public static Climber climber;
 	
 	public static Arm arm;
+	
+	public static Gripper gripper;
 
 	public BaseCommand() {
 		super();
@@ -51,9 +51,9 @@ public abstract class BaseCommand extends Command {
 		// Initialize subsystems.
 		driveTrain = new DriveTrain();
 		pnuematics = new Pnuematics();
-		armGyro = new ArmGyro();
 		climber = new Climber();
 		arm = new Arm();
+		gripper = new Gripper();
 	}
 
 	@Override

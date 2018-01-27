@@ -14,9 +14,12 @@ public class RobotMap {
 // ------------------------Pnuematics-----------------------------------------
 	public static final int COMPRESSOR_CHANNEL = 0;
 	
-	public static final int FAST_PNUEMATICS_BUTTON = 1;
-	public static final int SLOW_PNUEMATICS_BUTTON = 2;
+	public static final int FAST_PNUEMATICS_BUTTON = 1; // A or X
+	public static final int SLOW_PNUEMATICS_BUTTON = 2; // B or Circle
 	
+	public static final int GRIPPER_BUTTON_ID = 3; // X or Square
+	public static final int GRIPPER_ABORT_BUTTON_ID = 5; //RIGHT bumper 
+	public static final int GRIPPER_ABORTRESET_BUTTON_ID = 7;//<back Button
 	
 	public static final int FAST_SOLENOID_CHANNEL = 5;
 	public static final int SLOW_SOLENOID_CHANNEL = 6;
@@ -30,6 +33,7 @@ public class RobotMap {
 	
 	public static final int SPARK_CHANNEL_1 = 0;
 	public static final int SPARK_CHANNEL_2 = 1;
+	public static final int SPARK_CHANNEL_3 = 3;
 	
 //--------------------XBOX-----------------------------------------------------
 	public static final int XBOX_DRIVE_ID = 0;
@@ -39,6 +43,6 @@ public class RobotMap {
 	public static final int XBOX_LEFT_YAXIS_ID = 1;
 	public static final int XBOX_LEFT_XAXIS_ID = 0;
 	
-	public static final Port I2C_port = I2C.Port.kOnboard;	
+	public static final Port I2C_port = I2C.Port.kOnboard;	//Accelerometer
 
 }

@@ -6,7 +6,7 @@ public class ArmCommand extends BaseCommand {
 	public ArmCommand() {
 		System.out.println("Arcade initialization");
 		//DUNNO IF WE NEED THROTTLE
-		throttle = 1;
+		throttle = .25;
 		//gyroAngle = 0;
 		//totalAngle = 0;
 		
@@ -14,16 +14,17 @@ public class ArmCommand extends BaseCommand {
 	}
 	
 	@Override
+	
 	protected void execute() {
-		
-		arm.ArmCommand(Math.pow(oi.getRightYAxis(),1)*throttle);
+		arm.moveArm(Math.pow(oi.getRightYAxis(),1)*throttle);
+		arm.printRawAccel();
 	}
 	
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
 		super.initialize();
-		//System.out.println("Can I even??");
+		//System.out.println("Can I even arm??");
 	}
 
 	@Override
