@@ -17,7 +17,7 @@ public class ArmCommand extends BaseCommand {
 	
 	protected void execute() {
 		arm.moveArm(Math.pow(oi.getRightYAxis(),1)*throttle);
-		arm.printRawAccel();
+		//arm.printRawAccel();
 	}
 	
 	@Override
