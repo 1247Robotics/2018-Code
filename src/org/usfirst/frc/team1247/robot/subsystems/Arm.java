@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 
-public class Arm extends Subsystem {
+//https://wpilib.screenstepslive.com/s/currentCS/m/java/l/599736-pidsubsystems-for-built-in-pid-control
+public class Arm extends PIDSubsystem {  //Subsystem -> PIDSubsystem
 	private Spark spark1, spark2;
 	private Accelerometer adxl345;
 	private double accX, accY, accZ, angle, avgAngle;
@@ -16,6 +17,8 @@ public class Arm extends Subsystem {
 	private double[] angles;
 
 	public Arm() {
+		super("Arm", 2.0, 0.0, 0.0); // The constructor passes a name for the subsystem and the P, I and D constants that are used when computing the motor output
+		
 		spark1 = new Spark(RobotMap.SPARK_CHANNEL_1);
 		spark2 = new Spark(RobotMap.SPARK_CHANNEL_2);
 		// spark1.setInverted(false);
@@ -37,6 +40,10 @@ public class Arm extends Subsystem {
 		angles = new double[sampleSize];
 		for (int i = 0; i < sampleSize; i++)
 			angles[i] = angle;
+		
+		setAbsoluteTolerance(0.25);
+		getPIDController().setContinuous(false);
+		setInputRange(90, 270);
 
 		System.out.println("rawAngle\tAvgAngle");
 	}
@@ -137,5 +144,21 @@ public class Arm extends Subsystem {
 			total += angles[i];
 		avgAngle = total / sampleSize;
 	}
+	
+	protected double returnPIDInput() {
+    		//return getRawAngle(); //We might fighting our selves by over filtering
+		return getAvgAngle(); // returns the sensor value that is providing the feedback for the system
+    	}
+
+   	protected void usePIDOutput(double output) {
+    		spark1.pidWrite(-output); // this is where the computed output value fromthe PIDController is applied to the motor
+    		spark2.pidWrite(output);
+	}
+	
+	public void goAngle(double a){
+		setSetpoint(a);
+	}
+	
+	
 
 }
