@@ -3,12 +3,12 @@ package org.usfirst.frc.team1247.robot.commands;
 public class GripperCommand extends BaseCommand {
 	private boolean grabbing;
 	private boolean didChange;
-	
+
 	public GripperCommand() {
 		requires(gripper);
 		grabbing = false;
 		didChange = false;
-		
+
 	}
 
 	@Override
@@ -18,22 +18,21 @@ public class GripperCommand extends BaseCommand {
 			if (!didChange && grabbing) {
 				didChange = true;
 				grabbing = false;
-			} else if (!didChange && !grabbing){
+			} else if (!didChange && !grabbing) {
 				didChange = true;
 				grabbing = true;
 			}
 		} else {
 			didChange = false;
 		}
-		
-		if (oi.getGripperAbortMisson()){
+
+		if (oi.getGripperAbortMisson()) {
 			gripper.abortMission();
-		}
-		if (oi.getGripperAbortReset()){
+		} else if (oi.getGripperAbortReset()) {
 			gripper.abortReset();
 		}
-		
-		if (grabbing){
+
+		if (grabbing) {
 			gripper.grab();
 		} else {
 			gripper.release();

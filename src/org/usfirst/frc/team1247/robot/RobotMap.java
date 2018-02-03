@@ -20,6 +20,8 @@ public class RobotMap {
 	public static final int GRIPPER_BUTTON_ID = 3; // X or Square
 	public static final int GRIPPER_ABORT_BUTTON_ID = 5; //RIGHT bumper 
 	public static final int GRIPPER_ABORTRESET_BUTTON_ID = 7;//<back Button
+	public static final int GRIPPER_OPEN_SWITCH = 4; // or 5
+	public static final int GRIPPER_CLOSED_SWITCH = 5; // or 4
 	
 	public static final int FAST_SOLENOID_CHANNEL = 5;
 	public static final int SLOW_SOLENOID_CHANNEL = 6;
@@ -39,6 +41,8 @@ public class RobotMap {
 	public static final int XBOX_DRIVE_ID = 0;
 	
 	public static final int XBOX_RIGHT_YAXIS_ID  = 5;
+	public static final int ARM_FRONT_SWITCH = 2; // or 3
+	public static final int ARM_BACK_SWITCH = 3; // or 2
 //-----------------------DRIVE-------------------------------------------------
 	public static final int XBOX_LEFT_YAXIS_ID = 1;
 	public static final int XBOX_LEFT_XAXIS_ID = 0;
