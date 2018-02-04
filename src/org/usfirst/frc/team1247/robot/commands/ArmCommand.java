@@ -1,12 +1,12 @@
 package org.usfirst.frc.team1247.robot.commands;
 
 public class ArmCommand extends BaseCommand {
-	double throttle;
+	
 	
 	public ArmCommand() {
 		System.out.println("Arcade initialization");
 		//DUNNO IF WE NEED THROTTLE
-		throttle = .25;
+		
 		//gyroAngle = 0;
 		//totalAngle = 0;
 		
@@ -16,7 +16,7 @@ public class ArmCommand extends BaseCommand {
 	@Override
 	
 	protected void execute() {
-		arm.moveArm(Math.pow(oi.getRightYAxis(),1)*throttle);
+		arm.moveArm(oi.getRightYAxis());
 		//arm.printRawAccel();
 	}
 	
