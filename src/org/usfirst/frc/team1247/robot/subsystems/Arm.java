@@ -31,8 +31,6 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 
 		spark1 = new Spark(RobotMap.SPARK_CHANNEL_1);
 		spark2 = new Spark(RobotMap.SPARK_CHANNEL_2);
-		// spark1.setInverted(false);
-		// spark2.setInverted(true);
 
 		maxThrottle = 0.25;
 		throttle = maxThrottle;
@@ -58,7 +56,7 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 		getPIDController().setContinuous(false);
 		setInputRange(90, 270);
 
-		// System.out.println("rawAngle\tAvgAngle");
+		System.out.println("rawAngle\tAvgAngle");
 	}
 
 	@Override
@@ -69,20 +67,7 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 	public void moveArm(double righty) {
 		// TODO Auto-generated method stub
 
-		// SYSTEM PRINTS
-
-		System.out.print("movingForward:");
-		System.out.print(movingForward);
-		System.out.print("  throttle:");
-		System.out.print(throttle);
-		System.out.print("  switchState:");
-		System.out.print(switchState);
-		System.out.print("  righty:");
-		System.out.println(righty);
-
-		// System.out.println(righty);
-
-		// movingForward and righty state
+		// ARM MOVEMENTS
 		spark1.setSpeed(-righty * throttle);
 		spark2.setSpeed(righty * throttle);
 		if (righty < -0.07) {
@@ -92,43 +77,41 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 		} else {
 			movingForward = 0;
 		}
-		
-		
 
-		//isForward
-		if (isForward.get() && movingForward == 1) {
-			throttle = 0;
-		} if (isForward.get() && movingForward == 0) {
-			throttle = 0;
-		} if (isForward.get() && movingForward == -1) {
-			throttle = maxThrottle;
-		}
-
-		//isBackward
-		if (isBackward.get() && movingForward == -1) {
-		throttle = 0;
-		} if(isBackward.get() && movingForward == 0) {
-			throttle = 0;
-		} if(isBackward.get() && movingForward == 1) {
-			throttle = maxThrottle;
-		}
-		
-		
-		//SWITCH DETECTION
-		if(isForward.get()) {
+		// switchState
+		if (isForward.get()) {
 			switchState = 1;
-		}	else if (isBackward.get()) {
-				switchState = -1;
+		} else if (isBackward.get()) {
+			switchState = -1;
 		} else {
 			switchState = 0;
 		}
-						
-			
-		
-		
-		
-		//NONE
-		if (isBackward.get() == false && isForward.get() == false){
+
+		// isForward
+		if (isForward.get() && movingForward == 1) {
+			throttle = 0;
+		}
+		if (isForward.get() && movingForward == 0) {
+			throttle = 0;
+		}
+		if (isForward.get() && movingForward == -1) {
+			throttle = maxThrottle;
+		}
+
+		// isBackward
+		if (isBackward.get() && movingForward == -1) {
+			throttle = 0;
+		}
+		if (isBackward.get() && movingForward == 0) {
+			throttle = 0;
+		}
+		if (isBackward.get() && movingForward == 1) {
+			throttle = maxThrottle;
+		}
+
+		// not isForward and not isBackward
+
+		if (switchState == 0) {
 			throttle = maxThrottle;
 		}
 
@@ -137,13 +120,13 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 		addSample();
 		calcAvgAngle();
 
-		// System.out.println(getStrRawAngle() + "\t" + getStrAvgAngle());
+		System.out.println(getStrRawAngle() + "\t" + getStrAvgAngle());
 	}
 
 	// gyro accel
 
 	public void getAccel() {
-		// System.out.println("Getting Values");
+		System.out.println("Getting Values");
 		accX = adxl345.getX();
 		accY = adxl345.getY();
 		accZ = adxl345.getZ();
