@@ -66,6 +66,7 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 
 	public void moveArm(double righty) {
 		// TODO Auto-generated method stub
+		
 		// ARM MOVEMENTS
 		spark1.setSpeed(-righty * throttle);
 		spark2.setSpeed(righty * throttle);
