@@ -13,13 +13,14 @@ import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 	private Spark spark1, spark2;
 	private Accelerometer adxl345;
-	private double accX, accY, accZ, angle, avgAngle;
+	private double accX, accY, accZ, angle, avgAngle, targetAngle;
 	private int sampleSize, sample;
 	private double[] angles;
 	private DigitalInput isForward, isBackward;
 	private int movingForward;
-	double throttle, maxThrottle;
+	private double throttle, maxThrottle;
 	private int switchState;
+	private boolean didStop, stopped;
 
 	public Arm() {
 		super("Arm", 2.0, 0.0, 0.0); // The constructor passes a name for the
@@ -32,17 +33,21 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 		spark1 = new Spark(RobotMap.SPARK_CHANNEL_1);
 		spark2 = new Spark(RobotMap.SPARK_CHANNEL_2);
 
-		maxThrottle = 0.3;
+		maxThrottle = 0.6;
 		throttle = maxThrottle;
+		
+		movingForward = 0;
+		didStop = true;
+		stopped = false;
 
 		adxl345 = new ADXL345_I2C(RobotMap.I2C_port, Accelerometer.Range.k2G, 0x53);
 		accX = 0;
 		accY = 0;
 		accZ = 0;
 
-		angle = 180; // Change this to reflect the approximate starting angle of
-						// the arm
+		angle = 180; // Change this to reflect the approximate starting angle of			// the arm
 		avgAngle = angle;
+		targetAngle = angle;
 
 		sampleSize = 10; // Raise this number to increase smoothness at the cost
 							// of lag
@@ -68,17 +73,32 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 		// TODO Auto-generated method stub
 		
 		// ARM MOVEMENTS
-		spark1.setSpeed(-righty * throttle);
-		spark2.setSpeed(righty * throttle);
+		
 		if (righty < -0.07) {
 			movingForward = 1;
+			stopped = false;
+			spark1.setSpeed(-righty * throttle);
+			spark2.setSpeed(righty * throttle);
 		} else if (righty > 0.07) {
 			movingForward = -1;
+			stopped = false;
+			spark1.setSpeed(-righty * throttle);
+			spark2.setSpeed(righty * throttle);
 		} else {
 			movingForward = 0;
+			if (!stopped)
+				didStop = true;
+			else
+				goAngle(targetAngle);
+		}
+		
+		if (didStop){
+			targetAngle = getAvgAngle();
+			didStop = false;
+			stopped = true;
 		}
 
-		System.out.println(switchState + ", " + isForward.get() + ", " + isBackward.get() + movingForward);
+		//System.out.println(switchState + ", " + isForward.get() + ", " + isBackward.get() + movingForward);
 		
 		
 		// switchState
@@ -117,13 +137,14 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 		if (switchState == 0) {
 			throttle = maxThrottle;
 		}
+	
 
 		getAccel();
 		calcAngle();
 		addSample();
 		calcAvgAngle();
 
-	//	System.out.println(getStrRawAngle() + "\t" + getStrAvgAngle());
+		//System.out.println(/*getRawAccX() + ", " +getRawAccY() + ", " + getRawAccZ() + "\t" +  */getStrRawAngle() + "\t" + getStrAvgAngle());
 	}
 
 	// gyro accel
@@ -223,6 +244,7 @@ public class Arm extends PIDSubsystem { // Subsystem -> PIDSubsystem
 
 	public void goAngle(double a) {
 		setSetpoint(a);
+		System.out.println("Going to: " + a + "\t Current Angle: " + getAvgAngle());
 	}
 
 }

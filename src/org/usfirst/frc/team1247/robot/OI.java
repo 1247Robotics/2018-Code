@@ -35,21 +35,20 @@ public class OI {
 		axisValue = xboxDriveJoystick.getRawAxis(RobotMap.XBOX_LEFT_XAXIS_ID);
 		return axisValue;
 	}
-//----------------------------Climb Button-------------------------------------------
-		
-	public boolean getFastPnuematicsButton(){
+	//----------------------------Gripper--------------------------------------------		
+	public boolean getGripperButton(){
 		boolean pressed = false;
 		
 		pressed = xboxDriveJoystick.getRawButton(RobotMap.FAST_PNUEMATICS_BUTTON);
 		return pressed;
 	}
 	
-	public boolean getSlowtPnuematicsButton(){
+	/*public boolean getSlowtPnuematicsButton(){
 		boolean pressed = false;
 		
 		pressed = xboxDriveJoystick.getRawButton(RobotMap.SLOW_PNUEMATICS_BUTTON);
 		return pressed;
-	}
+	}*/
 	
 //----------------------------Arm---------------------------------------------------
 	public double getRightYAxis() {
@@ -59,25 +58,7 @@ public class OI {
 		return axisValue;
 	}
 
-//----------------------------Gripper-------------------
-	public boolean getGripperButton(){
-		boolean pressed = false;
-		
-		pressed = xboxDriveJoystick.getRawButton(RobotMap.GRIPPER_BUTTON_ID);
-		return pressed;
-		
-	}
+
+
 	
-	public boolean getGripperAbortMisson(){
-		boolean pressed = false;
-		
-		pressed = xboxDriveJoystick.getRawButton(RobotMap.GRIPPER_ABORT_BUTTON_ID);
-		return pressed;
-	}
-	public boolean getGripperAbortReset(){
-		boolean pressed = false;
-		
-		pressed = xboxDriveJoystick.getRawButton(RobotMap.GRIPPER_ABORTRESET_BUTTON_ID);
-		return pressed;
-	}
 }

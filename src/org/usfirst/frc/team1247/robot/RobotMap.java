@@ -14,18 +14,18 @@ public class RobotMap {
 // ------------------------Pnuematics-----------------------------------------
 	public static final int COMPRESSOR_CHANNEL = 0;
 	
-	public static final int FAST_PNUEMATICS_BUTTON = 1; // A or X
-	public static final int SLOW_PNUEMATICS_BUTTON = 2; // B or Circle
+	public static final int FAST_PNUEMATICS_BUTTON = 5; // A or X
+	//public static final int SLOW_PNUEMATICS_BUTTON = 2; // B or Circle
 	
-	public static final int GRIPPER_BUTTON_ID = 3; // X or Square
-	public static final int GRIPPER_ABORT_BUTTON_ID = 5; //RIGHT bumper 
-	public static final int GRIPPER_ABORTRESET_BUTTON_ID = 7;//<back Button
-	public static final int GRIPPER_OPEN_SWITCH = 4; // or 5
-	public static final int GRIPPER_CLOSED_SWITCH = 5; // or 4
+
+	public static final int GRIPPER_OPEN_SWITCH = 5; // or 5
+	public static final int GRIPPER_CLOSED_SWITCH = 6; // or 4
 	
 	public static final int FAST_SOLENOID_CHANNEL = 5;
 	public static final int SLOW_SOLENOID_CHANNEL = 6;
 	public static final int KEY_SOLENOID_CHANNEL = 7;
+	
+	public static final int ANALOG_PRESSURE_CHANNEL = 3;
 
 // ------------------------TALONS---------------------------------------------
 	public static final int TALON_CHANNEL_LEFT_1 = 1; 

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1247.robot.subsystems;
+/*package org.usfirst.frc.team1247.robot.subsystems;
 
 import org.usfirst.frc.team1247.robot.RobotMap;
 import org.usfirst.frc.team1247.robot.commands.ClimbCommand;
@@ -41,3 +41,4 @@ public class Climber extends Subsystem {
 		key.set(false);
 	}
 }
+*/

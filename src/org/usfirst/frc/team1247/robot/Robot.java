@@ -1,14 +1,13 @@
 package org.usfirst.frc.team1247.robot;
 
 
-//import org.usfirst.frc.team1247.robot.commands.AutonomousMode;
+import org.usfirst.frc.team1247.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1247.robot.commands.BaseCommand;
 
 //import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 
@@ -23,7 +22,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class Robot extends IterativeRobot {
 	public static OI oi;
-	//AutonomousMode autonomousMode;
+	AutonomousMode autonomousMode;
     //PixyDuinoCommand pixy;
 	
 //	final String defaultAuto = "Default";
@@ -48,7 +47,7 @@ public class Robot extends IterativeRobot {
 		//CameraServer.getInstance().startAutomaticCapture();
 		oi = new OI();
 		BaseCommand.init();
-		//autonomousMode = new AutonomousMode();
+		autonomousMode = new AutonomousMode();
         //pixy = new PixyDuinoCommand();
         /*
         System.out.println(imu.getAngleX());
@@ -77,7 +76,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
-		//autonomousMode.start();
+		autonomousMode.start();
 	}
 
 	/**
@@ -105,7 +104,7 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void teleopPeriodic() {
-		LiveWindow.run();
+		//LiveWindow.run();
 		Scheduler.getInstance().run();
 		//System.out.println("Do I has teleop periodic even?");
 		
@@ -118,7 +117,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		Scheduler.getInstance().run();
-		LiveWindow.run();
+		//LiveWindow.run();
 	}
 	
 }

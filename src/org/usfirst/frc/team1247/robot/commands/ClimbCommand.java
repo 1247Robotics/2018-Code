@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1247.robot.commands;
+/*package org.usfirst.frc.team1247.robot.commands;
 
 public class ClimbCommand extends BaseCommand {
 
@@ -44,3 +44,4 @@ public class ClimbCommand extends BaseCommand {
 		super.interrupted();
 	}
 }
+*/
