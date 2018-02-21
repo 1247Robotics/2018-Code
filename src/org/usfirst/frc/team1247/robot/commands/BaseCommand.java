@@ -6,6 +6,7 @@ import org.usfirst.frc.team1247.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1247.robot.subsystems.Gripper;
 import org.usfirst.frc.team1247.robot.subsystems.Pnuematics;
 import org.usfirst.frc.team1247.robot.subsystems.Arm;
+import org.usfirst.frc.team1247.robot.subsystems.Climber;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -18,10 +19,10 @@ public abstract class BaseCommand extends Command {
 
 	public static Pnuematics pnuematics;
 
-	//public static Climber climber;
-	
+	public static Climber climber;
+
 	public static Arm arm;
-	
+
 	public static Gripper gripper;
 
 	public BaseCommand() {
@@ -51,7 +52,7 @@ public abstract class BaseCommand extends Command {
 		// Initialize subsystems.
 		driveTrain = new DriveTrain();
 		pnuematics = new Pnuematics();
-		//climber = new Climber();
+		climber = new Climber();
 		arm = new Arm();
 		gripper = new Gripper();
 	}

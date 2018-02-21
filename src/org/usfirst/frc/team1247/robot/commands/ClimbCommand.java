@@ -1,4 +1,4 @@
-/*package org.usfirst.frc.team1247.robot.commands;
+package org.usfirst.frc.team1247.robot.commands;
 
 public class ClimbCommand extends BaseCommand {
 
@@ -16,12 +16,16 @@ public class ClimbCommand extends BaseCommand {
 	@Override
 	protected void execute() {
 
-		if (oi.getFastPnuematicsButton()) {
-			climber.extendFast();
-		} else if (oi.getSlowtPnuematicsButton()) {
-			climber.extendSlow();
+		if (oi.getClimberPnuematicsButton()) {
+			climber.climberPnuematic();
 		} else {
-			climber.retract();
+			climber.climberPnuematicRetract();
+		}
+
+		if (oi.getClimberWinchButton()) {
+			climber.winchUp();
+		} else {
+			climber.winchStop();
 		}
 
 	}
@@ -44,4 +48,3 @@ public class ClimbCommand extends BaseCommand {
 		super.interrupted();
 	}
 }
-*/

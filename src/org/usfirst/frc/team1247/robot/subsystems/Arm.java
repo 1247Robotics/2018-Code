@@ -7,29 +7,27 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-//https://wpilib.screenstepslive.com/s/currentCS/m/java/l/599736-pidsubsystems-for-built-in-pid-control
-public class Arm extends Subsystem { // Subsystem -> PIDSubsystem
+public class Arm extends Subsystem { // Subsystem
 	private Spark spark1, spark2;
-	
+
 	private DigitalInput isForward, isBackward;
 	private int movingForward;
 	private double throttle, maxThrottle;
 	private int switchState;
 
 	public Arm() {
-		
-		isForward = new DigitalInput(RobotMap.ARM_FRONT_SWITCH); 
+
+		isForward = new DigitalInput(RobotMap.ARM_FRONT_SWITCH);
 		isBackward = new DigitalInput(RobotMap.ARM_BACK_SWITCH);
 
-		spark1 = new Spark(RobotMap.SPARK_CHANNEL_1);
-		spark2 = new Spark(RobotMap.SPARK_CHANNEL_2);
+		spark1 = new Spark(RobotMap.SPARK_CHANNEL_0);
+		spark2 = new Spark(RobotMap.SPARK_CHANNEL_1);
 
 		maxThrottle = 0.6;
 		throttle = maxThrottle;
-		
+
 		movingForward = 0;
-		
-		//System.out.println("rawAngle\tAvgAngle");
+
 	}
 
 	@Override
@@ -39,9 +37,9 @@ public class Arm extends Subsystem { // Subsystem -> PIDSubsystem
 
 	public void moveArm(double righty) {
 		// TODO Auto-generated method stub
-		
+
 		// ARM MOVEMENTS
-		
+
 		if (righty < -0.07) {
 			movingForward = 1;
 			spark1.setSpeed(-righty * throttle);
@@ -52,13 +50,12 @@ public class Arm extends Subsystem { // Subsystem -> PIDSubsystem
 			spark2.setSpeed(righty * throttle);
 		} else {
 			movingForward = 0;
-			
+
 		}
-		
-		
-		//System.out.println(switchState + ", " + isForward.get() + ", " + isBackward.get() + movingForward);
-		
-		
+
+		// System.out.println(switchState + ", " + isForward.get() + ", " +
+		// isBackward.get() + movingForward);
+
 		// switchState
 		if (isForward.get() == false) {
 			switchState = 1;
@@ -95,12 +92,6 @@ public class Arm extends Subsystem { // Subsystem -> PIDSubsystem
 		if (switchState == 0) {
 			throttle = maxThrottle;
 		}
-	
 
-
-		//System.out.println(/*getRawAccX() + ", " +getRawAccY() + ", " + getRawAccZ() + "\t" +  */getStrRawAngle() + "\t" + getStrAvgAngle());
 	}
 }
-
-
-	

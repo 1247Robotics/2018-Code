@@ -1,44 +1,44 @@
-/*package org.usfirst.frc.team1247.robot.subsystems;
+package org.usfirst.frc.team1247.robot.subsystems;
 
 import org.usfirst.frc.team1247.robot.RobotMap;
 import org.usfirst.frc.team1247.robot.commands.ClimbCommand;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Spark;
 
 //import org.usfirst.frc.team1247.robot.utils.ClimbMode;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
-	private Solenoid fast = new Solenoid(RobotMap.FAST_SOLENOID_CHANNEL);
-	private Solenoid slow = new Solenoid(RobotMap.SLOW_SOLENOID_CHANNEL);
-	private Solenoid key = new Solenoid(RobotMap.KEY_SOLENOID_CHANNEL);
+	private Solenoid climb = new Solenoid(RobotMap.CLIMBER_SOLENOID_CHANNEL);
+	private Spark spark;
 
 	public Climber() {
+		spark = new Spark(RobotMap.SPARK_CHANNEL_2);
 	}
 
-	@Override	protected void initDefaultCommand() {
+	@Override
+	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
 		setDefaultCommand(new ClimbCommand());
 	}
 
-	public void extendFast() {
-		slow.set(false);
-		fast.set(false);
-		key.set(true);
-		
+	public void winchUp() {
+		spark.set(1);
 	}
-	
-	public void extendSlow(){
-		fast.set(true);
-		slow.set(true);
-		key.set(true);
+
+	public void winchStop() {
+		spark.set(0);
 	}
-	
-	public void retract(){
-		slow.set(false);
-		fast.set(false);
-		key.set(false);
+
+	public void climberPnuematic() {
+		climb.set(true);
+
+	}
+
+	public void climberPnuematicRetract() {
+		climb.set(false);
+
 	}
 }
-*/
