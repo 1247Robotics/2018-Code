@@ -1,10 +1,9 @@
 package org.usfirst.frc.team1247.robot.commands;
 
-public class ClimbCommand extends BaseCommand {
+public class PnuematicsCommand extends BaseCommand {
 
-	public ClimbCommand() {
-
-		requires(climber);
+	public PnuematicsCommand() {
+		requires(pnuematics);
 	}
 
 	// Called just before this Command runs the first time
@@ -15,21 +14,10 @@ public class ClimbCommand extends BaseCommand {
 
 	@Override
 	protected void execute() {
-
-		if (oi.getClimberPnuematicsButton()) {
-			climber.climberPnuematic();
-		} else {
-			climber.climberPnuematicRetract();
-		}
-
-		if (oi.getClimberWinchButton()) {
-			climber.winchUp();
-		} else if (oi.getClimberReverseWinchButton()) {
-			climber.winchDown();
-		} else {
-			climber.winchStop();
-		}
-
+		if (oi.getCompressorOffButton())
+			pnuematics.stopCompressor();
+		if (oi.getCompressorOnButton())
+			pnuematics.startCompressor();
 	}
 
 	@Override

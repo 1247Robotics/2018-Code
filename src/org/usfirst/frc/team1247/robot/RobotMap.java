@@ -16,6 +16,7 @@ public class RobotMap {
 
 	public static final int GRIPPER_PNUEMATICS_BUTTON = 5; // Left BUmper
 	public static final int CLIMBER_WINCH_BUTTON = 1; // X Button
+	public static final int CLIMBER_REVERSE_WINCH_BUTTON = 2;
 	public static final int CLIMBER_PNUEMATICS_BUTTON = 6; // Right Bumper
 
 	public static final int GRIPPER_OPEN_SWITCH = 5; // or 5
@@ -23,8 +24,15 @@ public class RobotMap {
 
 	public static final int CLIMBER_SOLENOID_CHANNEL = 6;
 	public static final int GRIPPER_SOLENOID_CHANNEL = 7;
+	public static final int SENIOR_SOLENOID_CHANNEL = 5;
+	
+	public static final int SCARY_THINGS_HAPPENED_BUTTON_ID = 4;
+	
+	//public static final int SENIOR_BUTTON_ID = 2;
 
 	public static final int ANALOG_PRESSURE_CHANNEL = 3;
+	public static final int COMPRESSOR_OFF_BUTTON_ID = 8;
+	public static final int COMPRESSOR_ON_BUTTON_ID = 7;
 
 	// ------------------------TALONS---------------------------------------------
 	public static final int TALON_CHANNEL_LEFT_1 = 1;
@@ -47,5 +55,11 @@ public class RobotMap {
 	// -----------------------DRIVE-------------------------------------------------
 	public static final int XBOX_LEFT_YAXIS_ID = 1; // Drivetrain Control
 	public static final int XBOX_LEFT_XAXIS_ID = 0; // Drivetrain COntrol
-
+	
+	public static final Port I2C_port = I2C.Port.kOnboard;
+	//Accelerometer99
+	public static final int DIO_LEFT_SWITCH = 7;
+	public static final int DIO_RIGHT_SWITCH = 8;
+	public static final int RIGHT_TRIGGER = 3;
+	
 }

@@ -28,10 +28,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 
-		System.out.println("Robot Init!");
+		System.out.println("Robot Init");
 		oi = new OI();
 		BaseCommand.init();
-		autonomousMode = new AutonomousMode();
+		
 
 	}
 
@@ -53,6 +53,15 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void autonomousInit() {
+		System.out.println("Auto initialized...");
+	
+		String gameData = DriverStation.getInstance().getGameSpecificMessage();
+		if(gameData != null && gameData.length() > 0){
+			autonomousMode = new AutonomousMode(gameData);
+		} else {
+			autonomousMode = new AutonomousMode();
+		}
+		
 		autonomousMode.start();
 	}
 
@@ -76,11 +85,12 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledInit() {
-
+		Scheduler.getInstance().removeAll();
 	}
 
 	@Override
 	public void teleopPeriodic() {
+		
 		Scheduler.getInstance().run();
 
 	}

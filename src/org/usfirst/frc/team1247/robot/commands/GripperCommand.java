@@ -23,7 +23,7 @@ public class GripperCommand extends BaseCommand {
 			gripper.close();
 		}
 		
-		//System.out.println("Pressure val:   " + gripper.getPSI() + " PSI");
+		
 
 	}
 

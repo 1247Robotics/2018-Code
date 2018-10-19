@@ -27,7 +27,9 @@ public class Climber extends Subsystem {
 	public void winchUp() {
 		spark.set(1);
 	}
-
+	public void winchDown() {
+		spark.set(-1);
+	}
 	public void winchStop() {
 		spark.set(0);
 	}

@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Gripper extends Subsystem {
 	
 	private Solenoid key = new Solenoid(RobotMap.GRIPPER_SOLENOID_CHANNEL);
+	private Solenoid senior = new Solenoid(RobotMap.SENIOR_SOLENOID_CHANNEL);
 
 	private AnalogInput storedPressure = new AnalogInput(RobotMap.ANALOG_PRESSURE_CHANNEL);
 
@@ -33,7 +34,12 @@ public class Gripper extends Subsystem {
 	public void close() {
 		key.set(false);
 	}
-
+	public void seniorOpen() {
+		senior.set(true);
+	}
+	public void seniorClose() {
+		senior.set(false);
+	}
 	public int getRawPressure() {
 		return storedPressure.getValue();
 	}

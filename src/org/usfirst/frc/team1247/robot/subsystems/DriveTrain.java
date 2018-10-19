@@ -17,7 +17,9 @@ public class DriveTrain extends Subsystem{
 
 	
 	public DriveTrain() {
-		System.out.println("DriveTrain initialization...Did I un-Gage the code??");
+		
+		
+		System.out.println("DriveTrain initialization...");
 		talon1 = new WPI_TalonSRX(RobotMap.TALON_CHANNEL_LEFT_1);
 		talon2 = new WPI_TalonSRX(RobotMap.TALON_CHANNEL_LEFT_2);
 		talon3 = new WPI_TalonSRX(RobotMap.TALON_CHANNEL_RIGHT_3);
@@ -39,6 +41,7 @@ public class DriveTrain extends Subsystem{
 	
 	public void ArcadeDrive(double leftx, double lefty){
 		drive.arcadeDrive(leftx, lefty, false);
+	//	System.out.println("Drive:  " + leftx);
 		//System.out.println(angle);
 		///System.out.println("DRIVE!");
 		//drive.mecanumDrive_Polar(leftx, lefty, rightx);

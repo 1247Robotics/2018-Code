@@ -27,7 +27,7 @@ public abstract class BaseCommand extends Command {
 
 	public BaseCommand() {
 		super();
-		// System.out.println("BaseCommand initialization");
+		 System.out.println("BaseCommand initialization...");
 
 	}
 

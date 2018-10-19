@@ -16,7 +16,7 @@ public class OI {
 	
 //------------------------------Controller Type--------------------------------------
 	public OI () {
-		System.out.println("I can has OI!");
+		System.out.println("OI initialized...");
 		xboxDriveJoystick = new Joystick(RobotMap.XBOX_DRIVE_ID);
 	}
 
@@ -57,6 +57,14 @@ public class OI {
 		return pressed;
 	}
 	
+	public boolean getClimberReverseWinchButton(){
+		boolean pressed = false;
+		
+		pressed = xboxDriveJoystick.getRawButton(RobotMap.CLIMBER_REVERSE_WINCH_BUTTON);
+		return pressed;
+	
+	}
+	
 //----------------------------Arm---------------------------------------------------
 	public double getRightYAxis() {
 		double axisValue;
@@ -64,8 +72,35 @@ public class OI {
 		axisValue = xboxDriveJoystick.getRawAxis(RobotMap.XBOX_RIGHT_YAXIS_ID);
 		return axisValue;
 	}
+	
+	public boolean driveState(){
+		boolean pressed = false;
+		double axisValue = xboxDriveJoystick.getRawAxis(RobotMap.RIGHT_TRIGGER);
+		
+		pressed = (axisValue > 0.85)?true:false;
+			
+	return pressed;
+	}
+	
+	public boolean getScaryButton() {
+		boolean pressed = false;
+		
+		pressed = xboxDriveJoystick.getRawButton(RobotMap.SCARY_THINGS_HAPPENED_BUTTON_ID);
+		return pressed;
+	}
+	
+	public boolean getCompressorOffButton() {
+		boolean pressed = false;
+		
+		pressed = xboxDriveJoystick.getRawButton(RobotMap.COMPRESSOR_OFF_BUTTON_ID);
+		return pressed;
+	}
 
-
-
+	public boolean getCompressorOnButton() {
+		boolean pressed = false;
+		
+		pressed = xboxDriveJoystick.getRawButton(RobotMap.COMPRESSOR_ON_BUTTON_ID);
+		return pressed;
+	}
 	
 }
